@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search results</title>
+</head>
+<body>
+<h1>Search results</h1>
+<style>
+       table{
+       font-family: arial, sans-serif; 
+       border-collapse:collapse;
+       width: 100%;             
+        }
+        td,th{
+       border: 1px solid #dddddd;
+       text-align: center;
+       padding: 8px;
+        }
+        tr: nth.child(even){
+              background-color: #dddddd;
+       }
+       </style>
+<table>
+       <tr>
+       <th>Index</th>
+       <th>Produkt Name</th>
+       <th>Anzahl</th>
+</tr>
+<tr>
+       {%for i in range(0,results|length)%}
+       <tr>{%for k in range (0,results[i]|length)%}
+       <td>{{results[i][k]}}</td>
+       {% endfor %}  
+       {% endfor %}   
+</tr>
+
+</tr>
+</table>
+<button class="ein"onclick="showForm()">
+       Einbuschen/Ausbuchen
+     </button>
+  
+<style>
+button {
+       background-color: #04AA6D;
+       color: white;
+       padding: 14px 20px;
+       margin: 8px 0;
+       border: none;
+       cursor: pointer;
+       width: 100%;
+     }
+     
+     button:hover {
+       opacity: 0.8;
+     }
+</style>
+<style>
+       #form {
+         display: none;
+       }
+     </style>
+   
+   
+   
+     <div id="form">
+       <form action="/submit_form" method="post">
+         <label for="quantity">Anzahl</label><br>
+         <input type="number" id="quantity" name="quantity"><br><br>
+         <input type="submit" value="Akzeptieren">
+       </form>
+     </div>
+   
+     <script>
+       function showForm() {
+         document.getElementById("form").style.display = "block";
+       }
+</script>
+</body>
+</html>
